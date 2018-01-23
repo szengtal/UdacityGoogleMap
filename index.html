@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>优达地图项目</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+</head>
+
+<body>
+
+  <nav id="site-nav" class="site-nav" role='navigation'>
+    <button href="#" id="site-nav--toggle" class="site-nav--toggle">
+      <i class="entypo-menu"></i>
+    </button>
+    </button>
+    <input type="text" id="searchInput" class="controls" id="filterMap" data-bind="textinput:filtetText" placeholder="输入地址" style="color:black;background-color:white;">
+    <ul class="site-nav--list" id="filter" data-bind="foreach:filteredList">
+      <li class="result">
+        <a href="#" data-bind="text:tittle,click:$parent.listClick"></a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+    <header class="site-header">
+      <h1>Udacity |
+        <span class="site-header--current">地图项目</span>
+      </h1>
+    </header>
+    <section class="workspace">
+      <input id="pac-input" class="controls" type="text" placeholder="搜索任意地方">
+      <div id="Googlemap"></div>
+    </section>
+  </div>
+
+  <script src='js/jquery.js'></script>
+  <script src="js/knockout-3.4.2.js" /> </script>
+  <script src="js/app.js"></script>
+  <script src="js/map.js" /> </script>
+  <script defer="defer" src="http://maps.google.cn/maps/api/js?region=cn&language=zh-CN&key=AIzaSyAql_QSFRwA4rj-hmJ--Xk3vXmsMeVbDiA&libraries=places&callback=start"
+    onerror="googleMapErr()">
+    </script>
+
+  <script>
+    $('#site-nav--toggle').click(function () {
+      // toggle a class on body to affect nav and workarea behaviour
+      $('body').toggleClass('body__expanded');
+    });
+
+    $(window).resize(function () {
+      $('body').removeClass('body__expanded');
+    });
+  </script>
+
+</body>
+</html>
